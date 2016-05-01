@@ -17,7 +17,7 @@ attack = Label(window, text=" Please Check Attacking IP ADDRESS Before Attacks")
 enter = Button(window, text = "Check IP", command = getIP)
 
 
-ipVar = raw_input(" Please Insert IP Address:" )
+ipVar = raw_input(" Please Insert IP Address: ")
 
 attack.pack()
 enter.pack()
@@ -76,12 +76,95 @@ def TsharkSpecs():
    print Specification
    button.pack()
 
+# beginning of code for Nmap
+
 def Nmap():
-   print IpVar
+   ipstring="sudo nmap -v "+ipVar
    filewin =Toplevel(window)
    button = Button(filewin, text="Ping, SYN Stealth Scan, TCP Port Scan")
-   version = os.system('sudo nmap -v', IpVar)
-   print version
+   Ping = os.system(ipstring)
+   print Ping
+   button.pack()
+
+def NmapPing():
+   ipstring="sudo nmap -sP "+ipVar
+   filewin =Toplevel(window)
+   button = Button(filewin, text="Ping Scan")
+   Ping = os.system(ipstring)
+   print Ping
+   button.pack()
+
+def NmapSyn():
+   ipstring="sudo nmap -sS "+ipVar
+   filewin =Toplevel(window)
+   button = Button(filewin, text="Syn Scan")
+   Syn = os.system(ipstring)
+   print Syn
+   button.pack()
+
+def NmapUDP():
+   ipstring="sudo nmap -sU "+ipVar
+   filewin =Toplevel(window)
+   button = Button(filewin, text="UDP Port Scan")
+   UDP = os.system(ipstring)
+   print UDP
+   button.pack()
+
+def NmapPort():
+   ipstring="sudo nmap -p1-65535 "+ipVar
+   filewin =Toplevel(window)
+   button = Button(filewin, text="Full Port Scan")
+   FullPort = os.system(ipstring)
+   print FullPort
+   button.pack()
+
+def NmapVersion():
+   ipstring="sudo nmap -sV "+ipVar
+   filewin =Toplevel(window)
+   button = Button(filewin, text="Version Detection")
+   Verison = os.system(ipstring)
+   print Verison
+   button.pack()
+
+def NmapOS():
+   ipstring="sudo nmap -O "+ipVar
+   filewin =Toplevel(window)
+   button = Button(filewin, text="OS Detection")
+   OSD = os.system(ipstring)
+   print OSD
+   button.pack()
+
+def NmapIPv6():
+   ipstring="sudo nmap -6 "+ipVar
+   filewin =Toplevel(window)
+   button = Button(filewin, text="IPv6 Scan")
+   IPv6 = os.system(ipstring)
+   print IPv6
+   button.pack()
+
+def NmapSpoofing():
+   macadd = raw_input(" Please Enter Attacking MAC ADDRESS: ")
+   ipstring="sudo nmap --spoof-mac "+macadd
+   filewin =Toplevel(window)
+   button = Button(filewin, text="Ping, SYN Stealth Scan, TCP Port Scan")
+   macattack = os.system(ipstring)
+   print mackattack
+   button.pack()
+
+def NmapAggressive():
+   ipstring="sudo nmap -A "+ipVar
+   filewin =Toplevel(window)
+   button = Button(filewin, text="Aggressive Scan")
+   Aggressive = os.system(ipstring)
+   print Aggressive
+   button.pack()
+
+def NmapConnection():
+   ipstring="sudo nmap -sT "+ipVar
+   filewin =Toplevel(window)
+   button = Button(filewin, text="Connection Detection")
+   Connect = os.system(ipstring)
+   print Connect
    button.pack()
    
 menubar = Menu(window)
@@ -103,10 +186,16 @@ nmapmenu = Menu(menubar, tearoff=0)
 nmapmenu.add_separator()
 
 nmapmenu.add_command(label="Ping, SYN Scan", command=Nmap)
-nmapmenu.add_command(label="Copy", command=donothing)
-nmapmenu.add_command(label="Paste", command=donothing)
-nmapmenu.add_command(label="Delete", command=donothing)
-nmapmenu.add_command(label="Select All", command=donothing)
+nmapmenu.add_command(label="Ping Scan Only", command=NmapPing)
+nmapmenu.add_command(label="Syn Scan Only", command=NmapSyn)
+nmapmenu.add_command(label="Connection Scan", command=NmapConnection)
+nmapmenu.add_command(label="UDP Port Scan", command=NmapUDP)
+nmapmenu.add_command(label="All Port Scan", command=NmapPort)
+nmapmenu.add_command(label="Version Dectection", command=NmapVersion)
+nmapmenu.add_command(label="OS Detection", command=NmapOS)
+nmapmenu.add_command(label="Aggressive Scan", command=NmapAggressive)
+nmapmenu.add_command(label="IPv6 Scan", command=NmapIPv6)
+nmapmenu.add_command(label="Mac Spoofing", command=NmapSpoofing)
 
 menubar.add_cascade(label="Nmap", menu=nmapmenu)
 
