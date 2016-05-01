@@ -1,0 +1,122 @@
+#!/usr/bin/env python2
+
+import os
+from Tkinter import *
+import tkMessageBox
+import json
+
+window = Tk()
+window.title("CyberPatriot Code")
+window.geometry("350x50")
+window.configure(background="#a1bdcd")
+
+def getIP():
+    print ipVar
+
+attack = Label(window, text=" Please Check Attacking IP ADDRESS Before Attacks")
+enter = Button(window, text = "Check IP", command = getIP)
+
+
+ipVar = raw_input(" Please Insert IP Address:" )
+
+attack.pack()
+enter.pack()
+
+def Tshark():
+   filewin = Toplevel(window)
+   button = Button(filewin, text="Verison Of Tshark")
+   RunTshark = os.system('tshark -v')
+   print RunTshark  
+   button.pack()
+
+def TsharkInstall():
+   filewin = Toplevel(window)
+   button = Button(filewin, text="Installing Tshark")
+   InstallTShark = os.system('sudo apt-get update | sudo apt-get upgrade | sudo apt-get install tshark')
+   print InstallTShark
+   button.pack()
+
+def TsharkSetup():
+   filewin = Toplevel(window)
+   button = Button(filewin, text="If Tshark doesn't Work")
+   FixTShark = os.system('sudo dpkg-reconfigure wireshark-common | sudo adduser wireshark')
+   print FixTShark
+   button.pack()
+
+def donothing():
+   filewin = Toplevel(window)
+   button = Button(filewin, text="Open Stuff")
+   button.pack()
+
+def TsharkNetworkAdapter():
+   filewin = Toplevel(window)
+   button = Button(filewin, text=" Should State: 1. eth0 2. nflog 3.nfqueue 4. any 5.lo")
+   NetworkAdapter = os.system('sudo tshark -D')
+   print NetworkAdapter
+   button.pack()
+
+def TsharkAny():
+   filewin = Toplevel(window)
+   button = Button(filewin, text=" Monitoring Any Network...")
+   AnyMonitor = os.system('sudo tshark -i any')
+   print AnyMonitor
+   button.pack()
+
+def TsharkEth():
+   filewin = Toplevel(window)
+   button = Button(filewin, text=" Monitoring Ethernet Only...")
+   EthMonitor = os.system('sudo tshark -i -eth0')
+   print EthMonitor
+   button.pack()
+
+def TsharkSpecs():
+   filewin =Toplevel(window)
+   button = Button(filewin, text=" Package Number, Time Stamp, Sender's IP Address, Receiver's IP Address, Package Contents")
+   Specification = os.system('sudo tshark -i any -T fields -e frame.number -e frame.time_relative -e ip.src -e ip.dst -e col.Info')
+   print Specification
+   button.pack()
+
+def Nmap():
+   print IpVar
+   filewin =Toplevel(window)
+   button = Button(filewin, text="Ping, SYN Stealth Scan, TCP Port Scan")
+   version = os.system('sudo nmap -v', IpVar)
+   print version
+   button.pack()
+   
+menubar = Menu(window)
+tsharkmenu = Menu(menubar, tearoff=0)
+tsharkmenu.add_command(label="Version Of Tshark", command=Tshark)
+tsharkmenu.add_command(label="Install Tshark", command=TsharkInstall)
+tsharkmenu.add_command(label="Set Up Tshark", command=TsharkSetup)
+tsharkmenu.add_command(label="Network Adapters List", command=TsharkNetworkAdapter)
+tsharkmenu.add_command(label="Network Monitor Any Network", command=TsharkAny)
+tsharkmenu.add_command(label="Network Monitor Ethernet Only", command=TsharkEth)
+tsharkmenu.add_command(label="Specifics In Traffic Request", command=TsharkSpecs)
+
+tsharkmenu.add_separator()
+
+tsharkmenu.add_command(label="Exit", command=window.quit)
+menubar.add_cascade(label="Tshark", menu=tsharkmenu)
+nmapmenu = Menu(menubar, tearoff=0)
+
+nmapmenu.add_separator()
+
+nmapmenu.add_command(label="Ping, SYN Scan", command=Nmap)
+nmapmenu.add_command(label="Copy", command=donothing)
+nmapmenu.add_command(label="Paste", command=donothing)
+nmapmenu.add_command(label="Delete", command=donothing)
+nmapmenu.add_command(label="Select All", command=donothing)
+
+menubar.add_cascade(label="Nmap", menu=nmapmenu)
+
+helpmenu = Menu(menubar, tearoff=0)
+helpmenu.add_command(label="Help Index", command=donothing)
+helpmenu.add_command(label="About...", command=donothing)
+menubar.add_cascade(label="Help", menu=helpmenu)
+
+window.config(menu=menubar)
+
+
+
+window.mainloop()
