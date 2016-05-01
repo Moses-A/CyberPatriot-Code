@@ -1,4 +1,5 @@
 #!/usr/bin/env python2
+# written by Moses Arocha
 
 import os
 from Tkinter import *
@@ -43,9 +44,14 @@ def TsharkSetup():
    print FixTShark
    button.pack()
 
-def donothing():
+def help():
    filewin = Toplevel(window)
-   button = Button(filewin, text="Open Stuff")
+   button = Button(filewin, text="This code is written in Python and uses the Terminal as output. In order to get the full effect please run this code as a SuperUser.")
+   button.pack()
+
+def about():
+   filewin = Toplevel(window)
+   button = Button(filewin, text="This is a program, written by Moses Arocha which utilizes the tools of Nmap and Tshark for the Holmes High School CyberPatriot Team. All Rights Reserverd.")
    button.pack()
 
 def TsharkNetworkAdapter():
@@ -148,7 +154,7 @@ def NmapSpoofing():
    filewin =Toplevel(window)
    button = Button(filewin, text="Ping, SYN Stealth Scan, TCP Port Scan")
    macattack = os.system(ipstring)
-   print mackattack
+   print macattack
    button.pack()
 
 def NmapAggressive():
@@ -200,8 +206,8 @@ nmapmenu.add_command(label="Mac Spoofing", command=NmapSpoofing)
 menubar.add_cascade(label="Nmap", menu=nmapmenu)
 
 helpmenu = Menu(menubar, tearoff=0)
-helpmenu.add_command(label="Help Index", command=donothing)
-helpmenu.add_command(label="About...", command=donothing)
+helpmenu.add_command(label="Help Index", command=help)
+helpmenu.add_command(label="About...", command=about)
 menubar.add_cascade(label="Help", menu=helpmenu)
 
 window.config(menu=menubar)
