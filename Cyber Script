@@ -5,7 +5,8 @@ import os
 
 # define the function blocks
 def firewall():
-    print "You typed zero.\n"
+    RunFireWallRules = os.system('sudo ufw status')
+    print RunFireWallRules
 
 def addUser():
     print "n is a perfect square\n"
@@ -13,8 +14,20 @@ def addUser():
 def deletingUser():
     print "n is an even number\n"
 
-def blockingPorts():
-    print "n is a prime number\n"
-
 # map the inputs to the function blocks
 
+ipVar = raw_input(" Please Insert IP Address: ")
+
+print ("\n\n In Compliance with the rules of Cyber Patriot, which Script Do You wish to Run?\n\n)
+
+choice = int(raw_input("\t 1. Firewall Setup \n\t 2. AddUser \n\t 3. DeleteUser")
+
+if 1 == choice:
+    firewall()
+
+elif 2 == choice:
+    addUser()
+    
+elif 3 == choice:
+    deletingUser()
+    
