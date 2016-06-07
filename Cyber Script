@@ -4,30 +4,40 @@
 import os
 
 # define the function blocks
-def firewall():
-    RunFireWallRules = os.system('sudo ufw status')
-    print RunFireWallRules
 
-def addUser():
+def firewall(): # begins the defintion of the firewall block, enables firewall, allows and denys ports
+    RunFireWallStatus = os.system('sudo ufw status  && sudo ufw enable')
+    print RunFireWallRules
+    allow = char(raw_input("\n\t Would you like to allow any ports? [Y/N] "))
+
+    if 'y' == allow:
+	port = int(raw_input("\n\t What port would you like to allow?")
+	portAllowed="sudo ufw allow"+port
+	RunFireWallAllow = os.system(portAllowed)
+	print RunFireWallAllow
+
+def addUser(): # allows the ability to add users, then checks to make sure everything has been synced up
     print "n is a perfect square\n"
 
-def deletingUser():
+def deletingUser(): # allows the ability to delete users, then checks to make sure everything has been synced up
     print "n is an even number\n"
 
 # map the inputs to the function blocks
 
 ipVar = raw_input(" Please Insert IP Address: ")
 
-print ("\n\n In Compliance with the rules of Cyber Patriot, which Script Do You wish to Run?\n\n)
+print ("\n\n In Compliance with the rules of Cyber Patriot, which Script Do You wish to Run?\n\n")
 
-choice = int(raw_input("\t 1. Firewall Setup \n\t 2. AddUser \n\t 3. DeleteUser")
+choice = int(raw_input("\t 1. Firewall Setup \n\t 2. AddUser \n\t 3. DeleteUser\n\n\t Script Number: "))
+
 
 if 1 == choice:
-    firewall()
+    	firewall()
 
 elif 2 == choice:
-    addUser()
+    	addUser()
     
 elif 3 == choice:
-    deletingUser()
-    
+    	deletingUser()
+else:
+	print "Incorrect Answer Choice"
