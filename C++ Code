@@ -1,0 +1,17 @@
+// Cyber Patriot Code
+// Written by Moses Arocha
+
+#include <iostream>
+#include <string> 
+#include <ctime>
+#include <vector>
+
+using namespace std;
+
+int main() 
+{
+    cout << "\n\t Welcome To The Cyber Patriot Code For Windows Machines!\n" << endl;
+    cout << "\n\n\t What Is The First Thing You Would Like To Do?" << endl;
+    system("NetSh Advfirewall set allprofiles state on");
+    return 0;
+}
