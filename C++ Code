@@ -1,5 +1,7 @@
 // Cyber Patriot Code
 // Written by Moses Arocha
+// This code will attempt to follow password history, account lockouts, audit logs, security options
+// turn on firewall, updates, disable and stop services, deny ports
 
 #include <iostream>
 #include <string> 
