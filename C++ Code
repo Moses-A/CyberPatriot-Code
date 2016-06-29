@@ -17,7 +17,7 @@ int main()
     system("NetSh Advfirewall set allprofiles state on"); // enables the firewall
     system("net user guest /active:no");                  // disables the guest user account
     system("net user /add Moses moses");                  // adds users
-    system("new localgroup administrators Moses /add");   // adds user as admin
+    system("net localgroup administrators Moses /add");   // adds user as admin
     system("net stop wuauserv");
     return 0;
 }
