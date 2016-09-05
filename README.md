@@ -1,5 +1,7 @@
 # CyberPatriot-Code
-Coded in Python and C++
+
+Every single Python and C++ file in this repository is independent of each other, unless specified in the comments.
+
 
 This Code Utilizes the prinicples of rules and regulations that CyberPatriot enforces. It uses tshark and nmap, along with adding in firewalls and basic network monitoring and security.
 
