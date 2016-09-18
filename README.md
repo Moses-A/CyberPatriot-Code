@@ -1,4 +1,4 @@
-# CyberPatriot-Code
+# CyberPatriot Scripts
 
 Every single Python and C++ file in this repository is independent of each other, unless specified in the comments.
 
