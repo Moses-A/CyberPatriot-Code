@@ -1,11 +1,11 @@
 #!/usr/bin/env python2
 # written by Moses Arocha
 
-
-import os
 from Tkinter import *
+
 import tkMessageBox
 import json
+import os
 
 
 window = Tk()
